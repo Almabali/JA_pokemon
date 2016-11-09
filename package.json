@@ -1,0 +1,19 @@
+{
+  "name": "ja_pokemon",
+  "version": "1.0.0",
+  "description": "Pokemon for Java Academy",
+  "main": "pokemonScript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Almabali/JA_pokemon.git"
+  },
+  "author": "ABBL",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Almabali/JA_pokemon/issues"
+  },
+  "homepage": "https://github.com/Almabali/JA_pokemon#readme"
+}
