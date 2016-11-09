@@ -4,7 +4,7 @@
 
 $(document).ready(function(){
 
-    $(refreshPokemonList).click(getPokemons($(listFrom).val),$(listTo).val);
+    $('.refreshPokemonList').click(getPokemons($('#listFrom').val),$('#listTo').val);
 
 
 
@@ -23,13 +23,17 @@ function getPokemon(indxex) {
 };
 
 function getPokemons(start, end){
-    var arr=new Array(end -start);
-    arr.fill(start);
+    starti=parseInt(start);
+    endi=parseInt(end);
+    var arr=new Array(endi -starti);
+    arr.fill(starti);
     for(let i=0; i<arr.length; i++){
-        arr[0]+=i;
+        arr[i]+=i;
     }
 
     arr.forEach((x)=>{x=getPokemon(x)});
-    
+    var htmlelem=("<li></li>");
+    arr.forEach(x=>{$(".pokemonList").append(htmlelem.text(x[1]))});
+
 
 }
