@@ -6,7 +6,21 @@
 .pokemonList{
     border:1px solid black;
     background-color: gray;
+    overflow: auto;
+    list-style-type: none;
+    max-height: 600px;
+    min-width: 120px;
 }
+.pokemonList>li{
+     border:1px solid black;
+     background-color: gray;
+ }
+
+/*.pokemonList>img{*/
+    /*border:1px solid black;*/
+    /*background-color: gray;*/
+    /*display: none;*/
+/*}*/
 
 .currentPokemonContainer{
     border:1px solid black;

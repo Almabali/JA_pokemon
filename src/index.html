@@ -8,18 +8,25 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-<header>Pokemon list</header>
-<div class="container">
+<header>Pokemon list
+
+
+</header>
+<div class="container container-fluid">
     <div class="row">
-        <div class="col-md-offset-1 col-md-3 pokemonListNavBar">
-            <input id="listFrom" type="number" default="1" maxlength="3">
-            <input id="listTo" type="number" default="151" maxlength="3">
+        <div class="col-xs-offset-0 col-xs-6 col-md-offset-1 col-md-3 pokemonListNavBar">
+            <input id="listFrom" type="number"  maxlength="3">
+            <input id="listTo" type="number"  maxlength="3">
             <button class="refreshPokemonList">Refresh list</button>
-            <ol class="pokemonList">
+            <form class="form-horizontal filterTypeForm" id="filterTypeList">
+
+            </form>
+            <button id="filterTypeBtn">Add filters</button>
+            <ul class="pokemonList" >
                 <li>Test pokemon</li>
-            </ol>
+            </ul>
         </div>
-        <div class="col-7-md currentPokemonContainer">
+        <div class="col-xs-6 col-7-md currentPokemonContainer">
 
         </div>
 
@@ -28,6 +35,7 @@
 
 
 <script src="jquery.js"></script>
+<script src="GUIscript.js"></script>
 <script src="pokemonScript.js"></script>
 </body>
 </html>
