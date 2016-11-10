@@ -105,7 +105,7 @@ function capitalizeFirstLetter(string) {
 }
 function loadPokeTypes(){
 
-    $.get( "http://pokeapi.co/api/v2/type/", function (data, status) {
+    $.get( "//pokeapi.co/api/v2/type/", function (data, status) {
         let res=[];
         data.results.forEach(x=>res.push(x.name));
         res.forEach(function (r) {
