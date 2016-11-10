@@ -8,6 +8,40 @@ $(document).ready(function(){
     $('.refreshPokemonList').click(function(){
         getPokemons($("#listFrom").val(),$("#listTo").val());
     });
+
+    $('#filterTypeBtn').click(function () {
+        var selected = [];
+        $('#filterTypeList input:checked').each(function() {
+            selected.push($(this).val());
+        });
+        let del=[];
+        console.log("selected: "+selected);
+
+        $(".pokemonList li").each(function(){
+            let ptypes=$(this).attr("types").split(",");
+
+            console.log(ptypes);
+            let b=true;
+
+            for(p of ptypes){
+                if (selected.indexOf(p)>=0){b=false}
+            }
+            del.push(b)
+
+        });
+
+        console.log(del);
+
+        for(let i=0; i<del.length;i++){
+            if (del[i]){
+                //console.log($(".pokemonList > li").eq(i+1));
+                $(".pokemonList > li").eq(i).addClass("hide");
+            }
+        }
+
+
+    })
+
 });
 
 function getPokemon(index,callback) {
@@ -18,22 +52,18 @@ function getPokemon(index,callback) {
         let pokename=data.forms[0].name;
         let poketypes=[];
         data.types.forEach(function(t){
-            poketypes.push(t.type.name)
+            poketypes.push(t.type.name);
         });
         console.log(pokename+" type: "+poketypes);
         poke.push(pokename);
+        poke.push(poketypes)
         callback(poke);
     });
 };
 
 function getPokemons(start, end){
-    console.log("Started get pokemons");
     let starti=Number(start);
     let endi=Number(end);
-    console.log(starti);// azt irja, hogy nem szám
-    // starti=5;//test
-    // endi=8;//test
-
     var arr=new Array(endi -starti+1);
     arr.fill(starti);
     for(let i=0; i<arr.length; i++){
@@ -42,19 +72,18 @@ function getPokemons(start, end){
 
     $('.pokemonList').empty();
 
-    console.log("pokelist empty");
-
     arr.forEach((x)=>{getPokemon(x, makeListElement)});
 
 }
 
 function makeListElement(poke){
     let elem=$("<li></li>");
+    elem.attr("types", poke[2].toString())
     let pic= $("<img src=''>");
     pic.attr("src",poke[0]);
     elem.text(capitalizeFirstLetter(poke[1]));
-    //console.log(poke);
-    $(".pokemonList").append(elem,pic);
+    elem.append(pic);
+    $(".pokemonList").append(elem);
 
 }
 
@@ -66,12 +95,11 @@ function loadPokeTypes(){
     $.get( "http://pokeapi.co/api/v2/type/", function (data, status) {
         let res=[];
         data.results.forEach(x=>res.push(x.name));
-        //console.log(res);
         res.forEach(function (r) {
             let cbelem=$("<div class='checkbox'></div>");
             let cblabel=$("<label></label>");
             let cbin=$("<input type='checkbox'>");
-            console.log(r);
+
             cbin.val(r.toString());
             cblabel.text(capitalizeFirstLetter(r));
             cblabel.prepend(cbin);
