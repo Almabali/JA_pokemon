@@ -66,15 +66,16 @@ function loadPokeTypes(){
     $.get( "http://pokeapi.co/api/v2/type/", function (data, status) {
         let res=[];
         data.results.forEach(x=>res.push(x.name));
-        console.log(res);
+        //console.log(res);
         res.forEach(function (r) {
             let cbelem=$("<div class='checkbox'></div>");
             let cblabel=$("<label></label>");
             let cbin=$("<input type='checkbox'>")
-            cbin.val(r);
+            console.log(r);
+            cbin.val(r.toString());
             cbin.text(capitalizeFirstLetter(r));
-            cblabel.text(cbin);
-            cbelem.text(cblabel);
+            cblabel.append(cbin);
+            cbelem.append(cblabel);
            $("#filterTypeList").append(cbelem);
 
         })
