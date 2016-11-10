@@ -70,11 +70,11 @@ function loadPokeTypes(){
         res.forEach(function (r) {
             let cbelem=$("<div class='checkbox'></div>");
             let cblabel=$("<label></label>");
-            let cbin=$("<input type='checkbox'>")
+            let cbin=$("<input type='checkbox'>");
             console.log(r);
             cbin.val(r.toString());
-            cbin.text(capitalizeFirstLetter(r));
-            cblabel.append(cbin);
+            cblabel.text(capitalizeFirstLetter(r));
+            cblabel.prepend(cbin);
             cbelem.append(cblabel);
            $("#filterTypeList").append(cbelem);
 
