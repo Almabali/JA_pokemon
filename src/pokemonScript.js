@@ -51,8 +51,12 @@ function makeListElement(poke){
     let elem=$("<li></li>");
     let pic= $("<img src=''>");
     pic.attr("src",poke[0]);
-    elem.text(poke[1]);
+    elem.text(capitalizeFirstLetter(poke[1]));
     //console.log(poke);
     $(".pokemonList").append(elem,pic);
 
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
