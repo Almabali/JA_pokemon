@@ -3,14 +3,11 @@
  */
 
 $(document).ready(function(){
+    loadPokeTypes();
 
     $('.refreshPokemonList').click(function(){
         getPokemons($("#listFrom").val(),$("#listTo").val());
     });
-    // $(".refreshPokemonList").click(console.log($('#listFrom').val()));
-    // $('.refreshPokemonList').click(console.log($("#listTo").val()));
-
-
 });
 
 function getPokemon(index,callback) {
@@ -19,7 +16,11 @@ function getPokemon(index,callback) {
     poke.push("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+index+".png");
     $.get(pokeurl, function (data, status) {
         let pokename=data.forms[0].name;
-        console.log(pokename);
+        let poketypes=[];
+        data.types.forEach(function(t){
+            poketypes.push(t.type.name)
+        });
+        console.log(pokename+" type: "+poketypes);
         poke.push(pokename);
         callback(poke);
     });
@@ -59,4 +60,23 @@ function makeListElement(poke){
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function loadPokeTypes(){
+
+    $.get( "http://pokeapi.co/api/v2/type/", function (data, status) {
+        let res=[];
+        data.results.forEach(x=>res.push(x.name));
+        console.log(res);
+        res.forEach(function (r) {
+            let cbelem=$("<div class='checkbox'></div>");
+            let cblabel=$("<label></label>");
+            let cbin=$("<input type='checkbox'>")
+            cbin.val(r);
+            cbin.text(capitalizeFirstLetter(r));
+            cblabel.text(cbin);
+            cbelem.text(cblabel);
+           $("#filterTypeList").append(cbelem);
+
+        })
+    });
 }
