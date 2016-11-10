@@ -5,6 +5,8 @@
 $(document).ready(function(){
 
     $('.refreshPokemonList').click(getPokemons($("#listFrom").val(),$("#listTo").val()));
+    $(".refreshPokemonList").click(console.log($('#listFrom').val()));
+    $('.refreshPokemonList').click(console.log($("#listTo").val()));
 
 
 });
@@ -22,6 +24,7 @@ function getPokemon(index) {
 };
 
 function getPokemons(start, end){
+    console.log("Started get pokemons");
     let starti=Number(start);
     let endi=Number(end);
     console.log(starti);// azt irja, hogy nem szám

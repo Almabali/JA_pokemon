@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Almabali/JA_pokemon/issues"
   },
-  "homepage": "https://github.com/Almabali/JA_pokemon#readme"
+  "homepage": "https://github.com/Almabali/JA_pokemon#readme",
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
 }
