@@ -11,21 +11,22 @@ $(document).ready(function(){
 
 function getPokemon(index) {
     var pokeurl= "http://pokeapi.co/api/v2/pokemon/"+index+"/";
-    var resp=[]
+    var resp=[];
     resp.push("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+index+".png");
     $.get(pokeurl, function (data, status) {
-        //pokemon=JSON.parse(data);
-        resp.push(data.forms[0].name);
+        let pokename=data.forms[0].name;
+        console.log(pokename);
+        resp.push(pokename);
         return resp;
     });
 };
 
 function getPokemons(start, end){
-    starti=parseInt(start);
-    endi=parseInt(end);
+    let starti=Number(start);
+    let endi=Number(end);
     console.log(starti);// azt irja, hogy nem szám
-    starti=5;//test
-    endi=8;//test
+    // starti=5;//test
+    // endi=8;//test
 
     var arr=new Array(endi -starti+1);
     arr.fill(starti);
@@ -34,8 +35,14 @@ function getPokemons(start, end){
     }
 
     arr.forEach((x)=>{x=getPokemon(x)});
-    var elem=$("<li></li>");
-    arr.forEach(x=>{$(".pokemonList").append(elem.text(x[1]))});
+    let elem=$("<li></li>");
+    let pic= $("<img src=''>");
+    $(".pokemonList").empty();
+    arr.forEach(x=>{
+        pic.attr("src",x[0]);
+        elem.text(x[1]);
+        $(".pokemonList").append(elem,pic);
+    });
 
 
 }
