@@ -11,9 +11,9 @@ $(document).ready(function(){
 });
 
 function getPokemon(index,callback) {
-    var pokeurl= "http://pokeapi.co/api/v2/pokemon/"+index+"/";
+    var pokeurl= "//pokeapi.co/api/v2/pokemon/"+index+"/";
     var poke=[];
-    poke.push("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+index+".png");
+    poke.push("//raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+index+".png");
     $.get(pokeurl, function (data, status) {
         let pokename=data.forms[0].name;
         let poketypes=[];
