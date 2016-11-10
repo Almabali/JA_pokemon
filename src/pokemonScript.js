@@ -5,11 +5,14 @@
 $(document).ready(function(){
     loadPokeTypes();
 
-    $('.refreshPokemonList').click(function(){
+    $('.refreshPokemonList').click(function(event){
+        event.preventDefault();
         getPokemons($("#listFrom").val(),$("#listTo").val());
+
     });
 
-    $('#filterTypeBtn').click(function () {
+    $('#filterTypeBtn').click(function (event) {
+        event.preventDefault();
         var selected = [];
         $('#filterTypeList input:checked').each(function() {
             selected.push($(this).val());
@@ -47,6 +50,7 @@ $(document).ready(function(){
 function getPokemon(index,callback) {
     var pokeurl= "//pokeapi.co/api/v2/pokemon/"+index+"/";
     var poke=[];
+
     poke.push("//raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+index+".png");
     $.get(pokeurl, function (data, status) {
         let pokename=data.forms[0].name;
@@ -57,6 +61,7 @@ function getPokemon(index,callback) {
         console.log(pokename+" type: "+poketypes);
         poke.push(pokename);
         poke.push(poketypes)
+
         callback(poke);
     });
 };
@@ -77,7 +82,9 @@ function getPokemons(start, end){
 }
 
 function makeListElement(poke){
+    console.log(poke);
     let elem=$("<li></li>");
+
     elem.attr("types", poke[2].toString())
     let pic= $("<img src=''>");
     pic.attr("src",poke[0]);
