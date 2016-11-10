@@ -4,22 +4,24 @@
 
 $(document).ready(function(){
 
-    $('.refreshPokemonList').click(getPokemons($("#listFrom").val(),$("#listTo").val()));
-    $(".refreshPokemonList").click(console.log($('#listFrom').val()));
-    $('.refreshPokemonList').click(console.log($("#listTo").val()));
+    $('.refreshPokemonList').click(function(){
+        getPokemons($("#listFrom").val(),$("#listTo").val());
+    });
+    // $(".refreshPokemonList").click(console.log($('#listFrom').val()));
+    // $('.refreshPokemonList').click(console.log($("#listTo").val()));
 
 
 });
 
-function getPokemon(index) {
+function getPokemon(index,callback) {
     var pokeurl= "http://pokeapi.co/api/v2/pokemon/"+index+"/";
-    var resp=[];
-    resp.push("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+index+".png");
+    var poke=[];
+    poke.push("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+index+".png");
     $.get(pokeurl, function (data, status) {
         let pokename=data.forms[0].name;
         console.log(pokename);
-        resp.push(pokename);
-        return resp;
+        poke.push(pokename);
+        callback(poke);
     });
 };
 
@@ -37,15 +39,20 @@ function getPokemons(start, end){
         arr[i]+=i;
     }
 
-    arr.forEach((x)=>{x=getPokemon(x)});
+    $('.pokemonList').empty();
+
+    console.log("pokelist empty");
+
+    arr.forEach((x)=>{getPokemon(x, makeListElement)});
+
+}
+
+function makeListElement(poke){
     let elem=$("<li></li>");
     let pic= $("<img src=''>");
-    $(".pokemonList").empty();
-    arr.forEach(x=>{
-        pic.attr("src",x[0]);
-        elem.text(x[1]);
-        $(".pokemonList").append(elem,pic);
-    });
-
+    pic.attr("src",poke[0]);
+    elem.text(poke[1]);
+    //console.log(poke);
+    $(".pokemonList").append(elem,pic);
 
 }
