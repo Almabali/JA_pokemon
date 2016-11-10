@@ -11,6 +11,11 @@ $(document).ready(function(){
 
     });
 
+    $('#showAllTypeBtn').click(function (event) {
+        event.preventDefault();
+        $(".pokemonList > li").removeClass("hide");
+    });
+
     $('#filterTypeBtn').click(function (event) {
         event.preventDefault();
         var selected = [];
@@ -36,6 +41,7 @@ $(document).ready(function(){
         console.log(del);
 
         for(let i=0; i<del.length;i++){
+            $(".pokemonList > li").eq(i).removeClass("hide");
             if (del[i]){
                 //console.log($(".pokemonList > li").eq(i+1));
                 $(".pokemonList > li").eq(i).addClass("hide");
@@ -86,7 +92,7 @@ function makeListElement(poke){
     let elem=$("<li></li>");
 
     elem.attr("types", poke[2].toString())
-    let pic= $("<img src=''>");
+    let pic= $("<img src=''>" );
     pic.attr("src",poke[0]);
     elem.text(capitalizeFirstLetter(poke[1]));
     elem.append(pic);
