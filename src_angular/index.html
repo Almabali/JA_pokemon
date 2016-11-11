@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
-    <title>Pokemon List</title>
+    <title>Pokemon List with Angular</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="pokemonStyle.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body ng-controller="pokeController">
 <header>Pokemon list
 </header>
 <div class="container-fluid mainContainer">
     <div class="row">
-        <div class="col-xs-12 col-md-offset-1 col-md-10 pokemonListNavBar">
+        <div class="col-md-offset-1 col-md-10 pokemonListNavBar">
             <form class="form-inline">
-                <input class="form-control" id="listFrom" type="number" maxlength="3">
-                <input class="form-control" id="listTo" type="number" maxlength="3">
-                <button class="btn btn-default refreshPokemonList">Refresh list</button>
+                <input class="form-control" id="listFrom" type="number" ng-model="listFrom">
+                <input class="form-control" id="listTo" type="number" ng-model="listTo">
+                <button class="btn btn-default refreshPokemonList" ng-click="refreshPokemonList()">Refresh list</button>
             </form>
             <div class="col-md-8 ">
-                <form class="form-inline filterTypeForm" id="filterTypeList">
+                <form class="form-inline filterTypeForm" id="filterTypeList" >
+                    <div class='checkbox' ng-repeat="f in ngFilterTypeList"
+                         ng-model=ngFilterTypeList[$index].checked>
+                        <label><input type='checkbox' value="{{f.type}}">{{f.type}}</label></div>
                 </form>
             </div>
             <div class="col-md-2 ">
@@ -33,10 +37,10 @@
         </div>
         <div class="col-xs-1 col-md-offset-1 col-md-4 container" id="pokemonListContainer">
             <ul class="pokemonList">
-                <li ng-repeat="p in ngPokemonList">{{p.name}}</li>
+                <li ng-repeat="p in ngPokemonList| orderBy : 'id' ">{{p.name}}<img src="//raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{p.id}}.png"> </li>
             </ul>
         </div>
-        <div class="col-xs-11 col-7-md" id="currentPokemonContainer">
+        <div class="col-7-md" id="currentPokemonContainer">
 
         </div>
 
@@ -47,9 +51,10 @@
 <script src="jquery.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-<!--<script src="GUIscript.js"></script>-->
-<script src="pokemonScript.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        crossorigin="anonymous">
+</script>
+
+<script src="ngPokeController.js"></script>
+
 </body>
 </html>
