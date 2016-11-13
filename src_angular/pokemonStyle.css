@@ -2,8 +2,7 @@
     padding: 0;
 }
 .mainContainer{
-    background-image: url("//img04.deviantart.net/3f4a/i/2013/075/1/b/pokemon_wallpaper___pokeball_by_kennedyzak-d5y9x2z.png");
-    height: 100%;
+    background-image: url("//img04.deviantart.net/3f4a/i/2013/075/1/b/pokemon_wallpaper___pokeball_by_kennedyzak-d5y9x2z.png")
 }
 header{
     background-image: url("//i.imgur.com/oJkBNgX.jpg");
@@ -32,13 +31,12 @@ header{
     background-color: gray;
     overflow: auto;
     list-style-type: none;
-    height:400px;
+    height: 500px;
     min-width: 120px;
 }
 .pokemonList>li{
      border:1px solid black;
      background-color: gray;
-    text-transform: capitalize;
  }
 
 .pokemonList>img{
