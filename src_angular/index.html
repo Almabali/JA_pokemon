@@ -36,7 +36,7 @@
                 <form class="form-inline filterTypeForm" id="filterTypeList" >
                     <div class='checkbox' ng-repeat="f in ngFilterTypeList">
                         <label>
-                            <input type='checkbox'  ng-click="ngFilterTypeChange()" />
+                            <input type='checkbox'  ng-click="ngFilterTypeChange(f)" />
                             {{f.type}}
                         </label>
                     </div>

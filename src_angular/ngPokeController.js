@@ -13,7 +13,7 @@ app.controller('pokeController', function($scope, $http) {
 
     response.data.results.forEach(function(x){
       var ngFilterType = {};
-      ngFilterType.checked=true;
+      ngFilterType.checked=false;
       ngFilterType.type=x.name;
       $scope.ngFilterTypeList.push(ngFilterType);
     });
@@ -42,7 +42,43 @@ app.controller('pokeController', function($scope, $http) {
     }
   };
 
-    $scope.ngFilterTypeChange= function () {console.log("Filtertype checked")};
+    $scope.ngFilterTypeChange= function (filterType) {
+
+
+        filterType.checked=!filterType.checked;
+        console.log("Filter type change runs"+filterType.type+" is checked: "+ filterType.checked);
+        let noneSelected = false;
+        $scope.ngFilterTypeList.forEach(function (ft) {
+            noneSelected |=ft.checked;
+        }) ;
+        console.log("Value of none Selected: "+noneSelected);
+
+        if (!noneSelected) {
+            console.log("Nothing selected branch ");
+            $scope.ngPokemonList.forEach(x=>x.show = true);
+
+        } else{
+            console.log("Somehing selected branch ");
+            
+            $scope.ngFilterTypeList.forEach(function (f) {
+                if(!f.checked){
+                    $scope.ngPokemonList.forEach(function (poke) {
+                        console.log("Hide: "+ poke.name);
+                        if(poke.type.indexOf(f.type)>=0){poke.show=false}
+
+                    })
+                }else{
+                    $scope.ngPokemonList.forEach(function (poke) {
+                        console.log("Show: "+ poke.name);
+                        if(poke.type.indexOf(f.type)>=0){poke.show=true}
+                    })
+
+                }
+            })
+        }
+
+
+    };
 
 
 
