@@ -59,7 +59,7 @@ app.controller('pokeController', function($scope, $http) {
 
         } else{
             console.log("Somehing selected branch ");
-            
+
             $scope.ngFilterTypeList.forEach(function (f) {
                 if(!f.checked){
                     $scope.ngPokemonList.forEach(function (poke) {
