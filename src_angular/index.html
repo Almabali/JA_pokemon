@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="en" ng-app="myApp">
+
 <head>
     <meta charset="UTF-8">
     <title>Pokemon List with Angular</title>
@@ -9,37 +11,48 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="pokemonStyle.css" rel="stylesheet" type="text/css">
 </head>
+
 <body ng-controller="pokeController">
-<header>Pokemon list
+
+<header>
+    Pokemon list
 </header>
+
 <div class="container-fluid mainContainer">
+
     <div class="row">
+
         <div class="col-md-offset-1 col-md-10 pokemonListNavBar">
             <form class="form-inline">
                 <input class="form-control" id="listFrom" type="number" ng-model="listFrom">
                 <input class="form-control" id="listTo" type="number" ng-model="listTo">
-                <button class="btn btn-default refreshPokemonList" ng-click="refreshPokemonList()">Refresh list</button>
+                <button class="btn btn-default refreshPokemonList" ng-click="refreshPokemonList()">
+                    Refresh list
+                </button>
             </form>
             <div class="col-md-8 ">
                 <form class="form-inline filterTypeForm" id="filterTypeList" >
                     <div class='checkbox' ng-repeat="f in ngFilterTypeList"
                          ng-model=ngFilterTypeList[$index].checked>
-                        <label><input type='checkbox' value="{{f.type}}">{{f.type}}</label></div>
+                        <label>
+                            <input type='checkbox' value="{{f.type}}">
+                            {{f.type}}
+                        </label>
+                    </div>
                 </form>
             </div>
-            <div class="col-md-2 ">
-                <button class="btn btn-default" id="showAllTypeBtn">Show All</button>
-            </div>
-            <div class="col-md-2 ">
-                <button class="btn btn-default" id="filterTypeBtn">Add filters</button>
-            </div>
-
         </div>
+
+
         <div class="col-xs-1 col-md-offset-1 col-md-4 container" id="pokemonListContainer">
             <ul class="pokemonList">
-                <li ng-repeat="p in ngPokemonList| orderBy : 'id' " ng-show="p.show">{{p.name}}<img src="//raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{p.id}}.png"> </li>
+                <li ng-repeat="p in ngPokemonList| orderBy : 'id' " ng-show="p.show">
+                    {{p.name}}
+                    <img src="//raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{p.id}}.png">
+                </li>
             </ul>
         </div>
+
         <div class="col-7-md" id="currentPokemonContainer">
 
         </div>
