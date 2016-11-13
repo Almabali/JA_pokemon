@@ -23,6 +23,7 @@
     <div class="row">
 
         <div class="col-md-offset-1 col-md-10 pokemonListNavBar">
+
             <form class="form-inline">
                 <input class="form-control" id="listFrom" type="number" ng-model="listFrom">
                 <input class="form-control" id="listTo" type="number" ng-model="listTo">
@@ -30,17 +31,18 @@
                     Refresh list
                 </button>
             </form>
+
             <div class="col-md-8 ">
                 <form class="form-inline filterTypeForm" id="filterTypeList" >
-                    <div class='checkbox' ng-repeat="f in ngFilterTypeList"
-                         ng-model=ngFilterTypeList[$index].checked>
+                    <div class='checkbox' ng-repeat="f in ngFilterTypeList">
                         <label>
-                            <input type='checkbox' value="{{f.type}}">
+                            <input type='checkbox'  ng-click="ngFilterTypeChange()" />
                             {{f.type}}
                         </label>
                     </div>
                 </form>
             </div>
+
         </div>
 
 
