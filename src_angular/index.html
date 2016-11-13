@@ -37,7 +37,7 @@
         </div>
         <div class="col-xs-1 col-md-offset-1 col-md-4 container" id="pokemonListContainer">
             <ul class="pokemonList">
-                <li ng-repeat="p in ngPokemonList| orderBy : 'id' ">{{p.name}}<img src="//raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{p.id}}.png"> </li>
+                <li ng-repeat="p in ngPokemonList| orderBy : 'id' " ng-show="p.show">{{p.name}}<img src="//raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{p.id}}.png"> </li>
             </ul>
         </div>
         <div class="col-7-md" id="currentPokemonContainer">
