@@ -23,9 +23,22 @@
     background-color: #3f96ff;
 }
 .pokemonList>li.bug{
-     background-color: maroon;
+     background-color: lightgreen;
  }
 
 .pokemonList>li.bug.poison{
-    background: linear-gradient(90deg, maroon 50%, purple 50%);
+    background: linear-gradient(90deg, lightgreen 50%, purple 50%);
+}
+
+.pokemonList>li.flying{
+    background-color: mediumpurple;
+}
+.pokemonList>li.flying.normal{
+    background: linear-gradient(90deg, mediumpurple 50%, #A8A878  50%);
+}
+.pokemonList>li.normal{
+    background-color: #A8A878;
+}
+.pokemonList>li.electric{
+    background-color: yellow;
 }
