@@ -11,7 +11,9 @@
 .pokemonList>li.fire{
     background-color: #ff7b2e;
 }
-
+.pokemonList>li.fire.flying{
+    background: linear-gradient(90deg, #ff7b2e 50%, mediumpurple  50%);
+}
 .pokemonList>li.grass.poison{
     /*border-left: 5px green;*/
     /*border-right: 5px purple;*/
