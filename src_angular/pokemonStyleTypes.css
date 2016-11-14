@@ -1,0 +1,31 @@
+.pokemonList>li.grass{
+    /*border: 5px solid green;*/
+    background-color: green;
+}
+
+.pokemonList>li.poison{
+    /*border: 5px solid purple;*/
+    background-color: purple;
+}
+
+.pokemonList>li.fire{
+    background-color: #ff7b2e;
+}
+
+.pokemonList>li.grass.poison{
+    /*border-left: 5px green;*/
+    /*border-right: 5px purple;*/
+
+    background: linear-gradient(90deg, green 50%, purple 50%);
+}
+
+.pokemonList>li.water{
+    background-color: #3f96ff;
+}
+.pokemonList>li.bug{
+     background-color: maroon;
+ }
+
+.pokemonList>li.bug.poison{
+    background: linear-gradient(90deg, maroon 50%, purple 50%);
+}
