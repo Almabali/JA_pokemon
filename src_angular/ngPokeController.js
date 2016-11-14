@@ -33,9 +33,11 @@ app.controller('pokeController', function($scope, $http) {
             poke.name = response.data.forms[0].name;
             poke.id = i;
             poke.type = [];
+            poke.typeClass = "";
             poke.show=true;
             response.data.types.forEach(function(t){
               poke.type.push(t.type.name);
+              poke.typeClass += (t.type.name + ' ' );
             });
             $scope.ngPokemonList.push(poke);
           });

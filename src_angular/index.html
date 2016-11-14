@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="pokemonStyle.css" rel="stylesheet" type="text/css">
+    <link href="pokemonStyleTypes.css" rel="stylesheet" type="text/css">
 </head>
 
 <body ng-controller="pokeController">
@@ -58,7 +59,7 @@
 
             <div class="col-xs-1 col-md-offset-3 col-md-6 container text-center" id="pokemonListContainer">
                 <ul class="pokemonList">
-                    <li ng-repeat="p in ngPokemonList| orderBy : 'id' " ng-show="p.show">
+                    <li class="{{p.typeClass}}" ng-repeat="p in ngPokemonList| orderBy : 'id' " ng-show="p.show">
                         {{p.name}}
                         <img src="//raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{p.id}}.png">
                     </li>
